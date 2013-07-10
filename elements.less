@@ -5,6 +5,13 @@
     More info at: http://lesselements.com
   ---------------------------------------------------*/
 
+// set @pie-location: "path-to-pie/PIE.htc";
+@pie-location: 0;
+.pie () when (isstring(@pie-location)) {
+  behavior: url(@pie-location);
+}
+.pie () when not (isstring(@pie-location)){}
+
 .gradient(@color: #F5F5F5, @start: #EEE, @stop: #FFF) {
   background: @color;
   background: -webkit-gradient(linear,
@@ -20,7 +27,7 @@
                                    @stop 100%);
   background: -o-linear-gradient(@stop,
                                  @start);
-  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@stop,@start));
+  .pie();
 }
 .bw-gradient(@color: #F5F5F5, @start: 0, @stop: 255) {
   background: @color;
@@ -37,7 +44,7 @@
                                    rgb(@stop,@stop,@stop) 100%);
   background: -o-linear-gradient(rgb(@stop,@stop,@stop),
                                  rgb(@start,@start,@start));
-  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",rgb(@stop,@stop,@stop),rgb(@start,@start,@start)));
+  .pie();
 }
 .bordered(@top-color: #EEE, @right-color: #EEE, @bottom-color: #EEE, @left-color: #EEE) {
   border-top: solid 1px @top-color;
@@ -49,11 +56,13 @@
   -webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
   -moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
   box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+  .pie();
 }
 .rounded(@radius: 2px) {
   -webkit-border-radius: @radius;
   -moz-border-radius: @radius;
   border-radius: @radius;
+  .pie();
 }
 .border-radius(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
   -webkit-border-top-right-radius: @topright;
@@ -69,6 +78,7 @@
   border-bottom-left-radius: @bottomleft;
   border-top-left-radius: @topleft;
   .background-clip(padding-box);
+  .pie();
 }
 .opacity(@opacity: 0.5) {
   -moz-opacity: @opacity;
@@ -76,8 +86,7 @@
   -webkit-opacity: @opacity;
   opacity: @opacity;
   @opperc: @opacity * 100;
-  -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
-  filter: ~"alpha(opacity=@{opperc})";
+  .pie();
 }
 .transition-duration(@duration: 0.2s) {
   -moz-transition-duration: @duration;
@@ -108,11 +117,13 @@
   -webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
   -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
   box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+  .pie();
 }
 .box-shadow(@arguments) {
   -webkit-box-shadow: @arguments;
   -moz-box-shadow: @arguments;
   box-shadow: @arguments;
+  .pie();
 }
 .box-sizing(@sizing: border-box) {
   -ms-box-sizing: @sizing;
